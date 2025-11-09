@@ -1,73 +1,146 @@
-# Welcome to your Lovable project
+# Project Analysis: JSON Dash Power
 
-## Project info
+## 📌 Overview
+This is a React-based web application built with TypeScript, Vite, and shadcn/ui components. The application serves as a dashboard system with user authentication, role-based access control, and Power BI report integration. The project simulates a backend using JSON data and localStorage for persistence.
 
-**URL**: https://lovable.dev/projects/66a790e9-dee9-4f7c-bd91-4c6927a473ea
+---
 
-## How can I edit this code?
+## 🏗️ Architecture
 
-There are several ways of editing your application.
+### ✅ Frontend Stack
+- React 18 with TypeScript  
+- Vite as the development/build tool  
+- React Router DOM for routing  
+- TanStack React Query (minimal use)  
+- shadcn/ui and Radix UI for components  
+- Tailwind CSS for styling  
+- Power BI Client for embedding reports  
 
-**Use Lovable**
+### 📂 Project Structure (Explained Verbally)
+- **Components**: Reusable UI + sidebar + layout + protected route  
+- **Contexts**: Authentication using AuthContext  
+- **Data**: `users.json` as a mock backend  
+- **Pages**: Login, Home, Users, Reports  
+- **Other**: Hooks, utility functions, App.tsx for layout + routing setup  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/66a790e9-dee9-4f7c-bd91-4c6927a473ea) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ⚙️ Hook-Based JSON Backend System
 
-**Use your preferred IDE**
+### 🔐 AuthContext Functionality
+This project uses AuthContext to simulate a backend system. It:
+- Loads initial users from `users.json`  
+- Authenticates login using email and password  
+- Saves the logged-in user in localStorage for persistence  
+- Provides CRUD operations for user accounts (add, update, delete)  
+- Maintains in-memory state and syncs it with localStorage  
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🧠 Web Application Working (Step-by-Step)
 
-Follow these steps:
+### 🔑 Authentication Flow
+1. User enters email and password on login page  
+2. AuthContext validates credentials from `users.json` or localStorage  
+3. On success, user data is stored in localStorage  
+4. Routes are protected using a ProtectedRoute component  
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🛂 Role-Based Access
+- **Admin**: Can access Home, Reports, and Users management  
+- **Viewer**: Can only access Home and Reports  
+- Sidebar changes dynamically based on role  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 📄 Main Pages
+- **Home** → Dashboard cards displaying basic stats  
+- **Users (Admin Only)** → User list + add + edit + delete  
+- **Reports** → Power BI sample report embedded using `powerbi-client`  
+- **Login** → Basic login with toast notifications  
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 🗂️ State Management
+- AuthContext for global authentication and users  
+- localStorage for persistence  
+- React Router for navigation  
+- React Query is present but not heavily used  
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🎨 Styling
+- Tailwind CSS for utility-based styling  
+- Fully responsive design  
+- Light and dark theme via shadcn/ui  
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🛠️ Development and Build Commands (No code, only actions)
+- Run development: `npm run dev`  
+- Build for production: `npm run build`  
+- Linting via ESLint  
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## ⚠️ Security Limitations
+- Passwords are stored in plain text (demo only)  
+- No real backend or database exists  
+- Authentication is fully client-side and not secure  
+- localStorage can be tampered with or attacked via XSS  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 🚀 Future Enhancements
+- Replace JSON/localStorage with real backend API  
+- Implement password hashing  
+- Use JWT for secure authentication  
+- Add real Power BI authentication instead of static token  
+- Add form validation and user profile management  
 
-Simply open [Lovable](https://lovable.dev/projects/66a790e9-dee9-4f7c-bd91-4c6927a473ea) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## ▶️ How to Run the Project (Simple Steps)
+1. Download or clone the repository from GitHub  
+2. Open the folder and install dependencies using `npm install`  
+3. Run the project locally using `npm run dev`  
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🔑 Test Login Credentials
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Admin:**  
+- Email: `admin@example.com`  
+- Password: `admin123`  
+
+**Viewer:**  
+- Email: `viewer@example.com`  
+- Password: `viewer123`  
+
+---
+
+## 📤 Submission Information
+- **GitHub Repository Link:** (you will paste your link here)  
+- **Live Demo (optional):** (if deployed)  
+
+---
+
+## 🧭 Approach and Thought Process (As Required in Assignment)
+Due to the 48-hour deadline, I focused on completing the frontend first with full functionality and simulated backend behavior using JSON and localStorage. My priorities were:
+- Implementing complete login/logout flow  
+- Restricting access based on role (admin/viewer)  
+- Creating a User Management dashboard for admins  
+- Embedding a Power BI report using sample values  
+- Making the UI visually clean, responsive, and modular  
+
+I structured the project like a real MERN application, so backend integration with Express, MongoDB, and JWT can be added later without major changes.
+
+---
+
+## 🤖 AI Tool Usage (Assignment Requirement)
+I used AI tools only to:
+- Help structure documentation and explanations  
+- Fix minor syntax mistakes  
+- Suggest UI/UX improvements in wording  
+
+All core implementation, logic, structure, and code were written by me manually.
+
+Thankyou, 
+Anushka Dubey
